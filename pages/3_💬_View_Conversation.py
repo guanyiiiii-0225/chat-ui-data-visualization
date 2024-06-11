@@ -19,7 +19,7 @@ DATABASE_NAME = os.getenv("DATABASE_NAME")
 @st.cache_resource
 def connect_to_mongodb(uri):
     # Create a new client and connect to the server
-    client = MongoClient(uri, server_api=ServerApi('1'))
+    client = MongoClient(uri)
 
     # Send a ping to confirm a successful connection
     try:

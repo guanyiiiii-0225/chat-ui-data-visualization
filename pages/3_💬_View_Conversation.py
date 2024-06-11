@@ -87,9 +87,11 @@ def get_merge_df(merge_type, remaining_columns):
 
     # Fetch data and turn into dataframe
     feedback_data = fetch_data(database, "feedback")
+    for feedback in feedback_data:
+        feedback['conversationId'] = str(feedback['conversationId'])
+        feedback['createdBy'] = str(feedback['createdBy'])
     feedback_df = pd.DataFrame(feedback_data)
     feedback_df.rename(columns={"_id": "feedback_id", "createdBy": "created_by", "conversationId": "conversation_id", "messageId": "message_id", "customComment": "custom_comment"}, inplace=True)
-    feedback_df['conversation_id'] = feedback_df['conversation_id'].astype(str)
 
     conversation_data = fetch_data(database, "conversations")
     conversation_df = create_conversation_dataframe(conversation_data)

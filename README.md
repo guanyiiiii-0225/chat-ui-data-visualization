@@ -43,3 +43,23 @@ streamlit run Home.py
 http://localhost:8501/
 
 ```
+
+## How to run - Docker
+
+### Build the Docker image
+
+```bash
+docker build -t my-streamlit-app -f Dockerfile . --build-arg URI=your_uri --build-arg DATABASE_NAME=your_database_name
+```
+
+### Run the Docker container
+
+```bash
+docker run -p 8501:8501 my-streamlit-app
+```
+
+### open the browser
+
+```bash
+http://localhost:8501/
+```

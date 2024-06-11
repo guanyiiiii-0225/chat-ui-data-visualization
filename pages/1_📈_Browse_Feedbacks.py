@@ -14,10 +14,8 @@ st.set_page_config(
 )
 
 load_dotenv(override=True)
-USERNAME = os.getenv("USERNAME")
-PASSWORD = os.getenv("PASSWORD")
+URI = os.getenv("URI")
 DATABASE_NAME = os.getenv("DATABASE_NAME")
-uri = "mongodb+srv://"+USERNAME+":"+PASSWORD+"@chatui.63yozgy.mongodb.net/?retryWrites=true&w=majority&appName=ChatUI"
 
 @st.cache_resource
 def connect_to_mongodb(uri):
@@ -111,7 +109,7 @@ def get_feedback_analytics(_merge_df):
     return feedback_count
 
 # -----------------------------get data------------------------------ #
-client = connect_to_mongodb(uri)
+client = connect_to_mongodb(URI)
 with st.spinner('Loading data...'):
     remaining_columns = ["feedback_id", "score", "feedback", "custom_comment", "message_content", "conversation_id", "message_id", "created_by", "created_at"]
     merge_df = get_merge_df(merge_type='right', remaining_columns=remaining_columns)

@@ -13,10 +13,8 @@ st.set_page_config(
 )
 
 load_dotenv(override=True)
-USERNAME = os.getenv("USERNAME")
-PASSWORD = os.getenv("PASSWORD")
+URI = os.getenv("URI")
 DATABASE_NAME = os.getenv("DATABASE_NAME")
-uri = "mongodb+srv://"+USERNAME+":"+PASSWORD+"@chatui.63yozgy.mongodb.net/?retryWrites=true&w=majority&appName=ChatUI"
 
 @st.cache_resource
 def connect_to_mongodb(uri):
@@ -81,7 +79,7 @@ def create_conversation_dataframe(_conversation_data):
     return conversation_df
 
 # -----------------------------get data------------------------------ #
-client = connect_to_mongodb(uri)
+client = connect_to_mongodb(URI)
 database = client.get_database(DATABASE_NAME)
 
 conversation_data = fetch_data(database, "conversations")

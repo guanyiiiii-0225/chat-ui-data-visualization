@@ -34,6 +34,8 @@ def connect_to_mongodb(uri):
 def fetch_data(_database, collection_name):
     collection = _database[collection_name]
     items = list(collection.find())
+    for item in items:
+        item['_id'] = str(item['_id'])
     return items
 
 def flatten_message(message):

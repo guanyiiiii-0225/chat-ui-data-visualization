@@ -3,6 +3,7 @@
 ## How to start - streamlit
 
 ### Copy .env.example to create a .env file
+
 Replace `YOUR_DB_URI` with the real DB URI!
 
 ```
@@ -55,16 +56,17 @@ http://localhost:8501/
 ## How to run - Docker
 
 ### Build the Docker image
-Replace `<your_db_uri>` with the real DB URI!
 
 ```bash
-docker build -t my-streamlit-app -f Dockerfile . --build-arg URI=<your_db_uri> --build-arg DATABASE_NAME="chat-ui"
+docker build -t my-streamlit-app -f Dockerfile .
 ```
 
 ### Run the Docker container
 
+Replace `<your_db_uri>` with the real DB URI!
+
 ```bash
-docker run -p 8501:8501 my-streamlit-app
+docker run -p 8501:8501 -e URI=<your_db_uri> -e DATABASE_NAME="chat-ui" my-streamlit-app
 ```
 
 ### Open the browser

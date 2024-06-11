@@ -1,8 +1,16 @@
 # chat-ui-data-visualization
 
-## how to start
+## How to start - streamlit
 
-### create a virtual environment
+### Copy .env.example to create a .env file
+Replace `YOUR_DB_URI` with the real DB URI!
+
+```
+URI = "YOUR_DB_URI"
+DATABASE_NAME = "chat-ui"
+```
+
+### Create a virtual environment
 
 ```bash
 
@@ -10,7 +18,7 @@ python -m venv visualization-tool
 
 ```
 
-### activate the virtual environment
+### Activate the virtual environment
 
 ```bash
 
@@ -20,7 +28,7 @@ source visualization-tool/bin/activate # for linux
 
 ```
 
-### install packages
+### Install packages
 
 ```bash
 
@@ -28,7 +36,7 @@ pip install -r requirements.txt
 
 ```
 
-### start the server
+### Start the server
 
 ```bash
 
@@ -36,7 +44,7 @@ streamlit run Home.py
 
 ```
 
-### open the browser
+### Open the browser
 
 ```bash
 
@@ -47,9 +55,10 @@ http://localhost:8501/
 ## How to run - Docker
 
 ### Build the Docker image
+Replace `<your_db_uri>` with the real DB URI!
 
 ```bash
-docker build -t my-streamlit-app -f Dockerfile . --build-arg URI=your_uri --build-arg DATABASE_NAME=your_database_name
+docker build -t my-streamlit-app -f Dockerfile . --build-arg URI=<your_db_uri> --build-arg DATABASE_NAME="chat-ui"
 ```
 
 ### Run the Docker container
@@ -58,7 +67,7 @@ docker build -t my-streamlit-app -f Dockerfile . --build-arg URI=your_uri --buil
 docker run -p 8501:8501 my-streamlit-app
 ```
 
-### open the browser
+### Open the browser
 
 ```bash
 http://localhost:8501/
